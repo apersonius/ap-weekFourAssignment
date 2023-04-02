@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Week Four Quiz</title>
+    <title>JavaScript Quiz</title>
 </head>
 <body>
-   <div class="container">
-        <div id="questionsContainer" class="hide">
-            <div id="question">Question</div>
-            <div id="answerButtons">
-                <button class="button">Answer1</button>
-                <button class="button">Answer2</button>
-                <button class="button">Answer3</button>
-                <button class="button">Answer4</button>
+   <div class="startButton"><button>Start</button></div>
+   <div class="quizBox">
+        <header>
+            <div class="title">JavaScript Quiz</div>
+            <div class="timer">
+                <div class="timeLeft">Time Left</div>
+                <div class="timerSeconds">60</div>
             </div>
-        </div>
-        <div class="controlBtns">
-            <button id="startButton" class="startButton btn">Start</button>
-            <button id="nextButton" class="nextButton btn hide">Next</button>            
-        </div>
-    </div>
+            <div class="timeLine"></div>
+        </header>
+        <section>
+            <div class="questions"></div>
+            <div class="answers"></div>
+        </section>
+   </div>
+   <div class="highScores"></div>
     <script src="script.js"></script>
 </body>
 </html>
