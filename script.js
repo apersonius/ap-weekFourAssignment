@@ -1,8 +1,38 @@
+//questions
+const questions = [
+    {
+        question: "does this quiz work",
+        choices: ["a. <yes>", "b. <no>", "c. <unsure>", "d. <we will see>"],
+        answer: "a"
+    },
+    {
+        question: "",
+        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
+        answer: ""
+    },
+    {
+        question: "",
+        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
+        answer: ""
+    },
+    {
+        question: "",
+        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
+        answer: ""
+    },
+    {
+        question: "",
+        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
+        answer: ""
+    },
+];
+
+
 const timerEl = document.getElementById("timer");
 const timeLeft = document.getElementById("timeLeft");
 const timesUp = document.getElementById("timesUp");
 
-const startButton = document.getElementById(".startButton");
+const startButton = document.getElementById("startQuizButton");
 const startDiv = document.getElementById("start");
 
 const questionDiv = document.getElementById("questionDiv");
@@ -30,34 +60,7 @@ const correctAnsw = 0;
 const questionNum = 0;
 const questionIndex = 0;
 
-//questions
-const questions = [
-    {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
-    },
-    {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
-    },
-    {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
-    },
-    {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
-    },
-    {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
-    },
-];
+let scoreResult;
 
 //start the game
 let totalTime = 121
@@ -69,7 +72,7 @@ function newQuiz() {
 
     startDiv.style.display = "none";
     questionDiv.style.display = "block";
-    timer.style.display = "block";
+    timerEl.style.display = "block";
     timesUp.style.display = "none";
 
     var startTimer = setInterval(function() {
@@ -195,8 +198,9 @@ function showHighScores() {
 
     let storedHighScores = JSON.parse(savedHighScores);
     for (; i < storeHighScores.length; i++) {
+        let eachNewHighScore = document.getElementById("p");
         eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " .storedHighScores[i].score;
-        listOfHighScores.appendChild(eachNewHighScore);
+        highScoreList.appendChild(eachNewHighScore);
     }
 }
 
@@ -223,6 +227,6 @@ backBtn.addEventListener("click", function(){
 
 clearHighScoreBtn.addEventListener("click", function(){
     window.localStorage.removeItem("high scores");
-    listOfHighScores.innerHTML = "high scores cleared";
-    listOfHighScores.setAttribute("style", "font=family: 'Archivo', sans-serif; font-style: italic;")
+    highScoreList.innerHTML = "high scores cleared";
+    highScoreList.setAttribute("style", "font=family: 'Archivo', sans-serif; font-style: italic;")
 });

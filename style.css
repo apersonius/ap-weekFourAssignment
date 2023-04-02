@@ -1,65 +1,48 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
-    background: gray;
+    background-color: #f2f2f2; 
 }
 
-.startButton,
-.quizBox,
-.highScores, {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+h1, 
+h2 {
+    color: #313740;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.startButton button {
-    font-size: 30px;
-    font-weight: 450;
-    padding: 15px 25px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    background: white;
-    cursor: pointer;
+a {
+    color: #3290A6;
+    font-family: 'Archivo', sans-serif;
 }
 
-.quizBox {
-    width: 550px;
-    background-color: white;
-    border-radius: 5px;
-    opacity: 0;
-    pointer-events: none;
+a:hover {
+    color: #99B8BF;
+    font-family: 'Archivo', sans-serif;
 }
 
-.quizBox header {
-    position: relative;
-    height: 75px;
-    padding: 0 30px;
-    background: white;
-    border-radius: 5px 5px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.btn:focus, .btn:active, .btn:visited {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #343a40;
 }
 
-.quizBox header .title {
+#finalScore {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+span {
+    font-family: 'Archivo', sans-serif;
+}
+
+p {
+    font-family: 'Archivo', sans-serif;
+}
+
+#questionTitle {
     font-size: 20px;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.quizBox header .timer {
-    background-color: deepskyblue;
-    border: 1px solid;
-    height: 45px;
-    padding: 0 7px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 150px;
+#answerCheck {
+    font-style: italic;
+    color: #4D5159;
 }
