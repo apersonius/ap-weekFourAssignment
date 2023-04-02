@@ -18,6 +18,14 @@ const submitBtn = document.getElementById("submitBtn");
 const initialInput = document.getElementById("initialInput");
 const everything = document.getElementById("everything");
 
+const highScoreSection = document.getElementById("highScoreSection");
+const finalScore = document.getElementById("finalScore");
+
+const backBtn = document.getElementById("backBtn");
+const clearHighScoreBtn = document.getElementById("clearHighScoreBtn");
+const viewHighScore = document.getElementById("viewHighScore");
+const highScoreList = document.getElementById("highScoreList");
+
 const correctAnsw = 0;
 const questionNum = 0;
 const questionIndex = 0;
@@ -113,21 +121,84 @@ function checkAnswer(answer) {
     }
 }
 
+function chooseA() {checkAnswer(0);}
+function chooseB() {checkAnswer(1);}
+function chooseC() {checkAnswer(2);}
+function chooseD() {checkAnswer(3);}
+
 //game over when questions answers/run out of time
 function gameOver() {
     summary.style.display = "block";
     questionDiv.style.display = "none";
     startDiv.style.display = "none";
-    timer.style.display = "none";
+    timerEl.style.display = "none";
     timesUp.style.display = "block";
 
+//show final score
     finalScore.textContent = correctAnsw;
 }
 
-startDiv.style.display = "none";
-timer.style.display = "none";
-timesUp.style.display = "none";
-summary.style.display = "none";
+//local storage
+function storeHighScores(event) {
+    event.preventDefault();
+
+    if(initialInput.value === "") {
+        alert("please enter your initials");
+        return;
+    }
+
+    startDiv.style.display = "none";
+    timerEl.style.display = "none";
+    timesUp.style.display = "none";
+    summary.style.display = "none";
+    highScoreSection.style.display = "block";
+
+    let savedHighScores = localStorage.getItem("high scores");
+    var scoresArray;
+
+    if(savedHighScores === null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedHighScores)
+    }
+
+    let userScore = {
+        initials: initialInput.value,
+        score: finalScore.textContent
+    };
+
+    console.log(userScore);
+    scoresArray.push(userScore);
+
+    var scoresArray = JSON.stringify(scoresArray);
+    window.localStorage.setItem("high scores", scoresArrayString);
+
+    showHighScores();
+}
+
+//show high scores
+let i = 0;
+function showHighScores() {
+
+    startDiv.style.display = "none";
+    timerEl.style.display = "none";
+    timesUp.style.display = "none";
+    summary.style.display = "none";
+    highScoreSection.style.display = "block";
+
+    let savedHighScores = localStorage.getItem("high scores");
+
+    if(savedHighScores === null) {
+        return;
+    }
+    console.log(savedHighScores);
+
+    let storedHighScores = JSON.parse(savedHighScores);
+    for (; i < storeHighScores.length; i++) {
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " storedHighScores[i].score;
+        listOfHighScores.appendChild(eachNewHighScore);
+    }
+}
 
 //event listeners
 
@@ -137,6 +208,21 @@ choiceB.addEventListener("click", chooseB);
 choiceC.addEventListener("click", chooseC);
 choiceD.addEventListener("click", chooseD);
 
-submitBtn.addEventListener("click", function(event) {
-    
-})
+submitBtn.addEventListener("click", function(event){
+    storeHighScores(event);
+});
+
+viewHighScore.addEventListener("click", function(event) {
+    showHighScores(event);
+});
+
+backBtn.addEventListener("click", function(){
+    startDiv.style.display = "block";
+    highScoreSection.style.display = "none";
+});
+
+clearHighScoreBtn.addEventListener("click", function(){
+    window.localStorage.removeItem("high scores");
+    listOfHighScores.innerHTML = "high scores cleared";
+    listOfHighScores.setAttribute("style", "font=family: 'Archivo', sans-serif; font-style: italic;")
+});
