@@ -198,9 +198,9 @@ function showHighScores() {
 
     let storedHighScores = JSON.parse(savedHighScores);
     
-    for (; i < storeHighScores.length; i++) {
+    for (; i < storedHighScores.length; i++) {
         let eachNewHighScore = document.getElementById("p");
-        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " .storedHighScores[i].score;
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " ; storedHighScores[i].score;
         highScoreList.appendChild(eachNewHighScore);
     }
 }
