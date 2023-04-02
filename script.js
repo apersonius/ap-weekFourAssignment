@@ -177,7 +177,7 @@ function storeHighScores(event) {
 }
 
 //show high scores
-let i = 0;
+var i = 0;
 function showHighScores() {
 
     startDiv.style.display = "none";
@@ -195,7 +195,7 @@ function showHighScores() {
 
     let storedHighScores = JSON.parse(savedHighScores);
     for (; i < storeHighScores.length; i++) {
-        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " storedHighScores[i].score;
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " .storedHighScores[i].score;
         listOfHighScores.appendChild(eachNewHighScore);
     }
 }
