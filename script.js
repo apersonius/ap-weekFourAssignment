@@ -1,22 +1,50 @@
-const timeEl = document.querySelector(".time");
-const mainEl = document.getElementById("main");
-const secondsLeft = 60;
+const timerEl = document.getElementById(".timerCount");
+const win = document.querySelector(".win");
+const lose = document.querySelector(".lose");
+const startButton = document.querySelector(".startButton");
+
+let timer;
+let timerCount;
+
+//start the game
+function startGame() {
+    timerCount = 60;
+    startButton.disabled = true;
+    startTimer()
+}
+
+//winGame when game is won
+function winGame() {
+    wordBlank.textContent = "You won";
+    startButton.disabled = false;
+}
+
+//loseGame when game is lost
+function loseGame() {
+    wordBlank.textContent = "Game Over";
+    startButton.disabled = false;
+}
 
 //timer function
-function setTime() {
-    let timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent = secondsLeft + " seconds left to complete quiz";
+function startTimer() {
+    timer = setInterval(function() {
+        timerCount--;
+        timerEl.textContent = timerCount;
+        if (timerCount >- 0) {
+            if (isWin && timerCount > 0) {
+                clearInterval(timer);
+                winGame();
+            }
+        }
 
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            sendMessage();
+        if (timerCount === 0) {
+            clearInterval(timer);
+            loseGame();
         }
     }, 1000);
 }
 
-function sendMessage() {
-    timeEl.textContent = "The quiz is over";
-}
+//event listener to start game
+startButton.addEventListener("click", startGame);
 
-setTime();
+Infinity();
