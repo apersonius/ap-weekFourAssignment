@@ -58,7 +58,7 @@ const highScoreList = document.getElementById("highScoreList");
 
 const correctAnsw = 0;
 const questionNum = 0;
-const questionIndex = 0;
+let questionIndex = 0;
 
 let scoreResult;
 
