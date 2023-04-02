@@ -1,30 +1,30 @@
 //questions
 const questions = [
     {
-        question: "does this quiz work",
-        choices: ["a. <yes>", "b. <no>", "c. <unsure>", "d. <we will see>"],
-        answer: "a"
+        question: "what type of language is Javascript?",
+        choices: ["a. <object-oriented>", "b. <object-based>", "c. <procedural>", "d. <none of the above>"],
+        answer: "a."
     },
     {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
+        question: "what does the Javascript debugger statement do?",
+        choices: ["a. <debug all the errors in the program at runtime>", "b. <it acts as a breakpoint in a program>", "c. <it will debug error in the current statement if any>", "d. <all of the above>"],
+        answer: "b."
     },
     {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
+        question: "what function is used to serialize an object into a JSON string in Javascript",
+        choices: ["a. <stringify()>", "b. <parse()>", "c. <convert()>", "d. <none of the above>"],
+        answer: "a."
     },
     {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
+        question: "what are the basic object attributes in Javascript?",
+        choices: ["a. <class, prototype, object parameters>", "b. <class, prototype, object extensible flag>", "c. <class, paramaters, objects extensible flag>", "d. <none of these>"],
+        answer: "b."
     },
     {
-        question: "",
-        choices: ["a. <>", "b. <>", "c. <>", "d. <>"],
-        answer: ""
-    },
+        question: "which of the following are closures in Javascript?",
+        choices: ["a. <variables>", "b. <functions>", "c. <objects>", "d. <all of the above>"],
+        answer: "d."
+    }
 ];
 
 
@@ -32,14 +32,14 @@ const timerEl = document.getElementById("timer");
 const timeLeft = document.getElementById("timeLeft");
 const timesUp = document.getElementById("timesUp");
 
-const startButton = document.getElementById("startQuizButton");
+const startButton = document.getElementById("startButton");
 const startDiv = document.getElementById("start");
 
 const questionDiv = document.getElementById("questionDiv");
 const questionTitle = document.getElementById("questionTitle");
 const choiceA = document.getElementById("btn0");
 const choiceB = document.getElementById("btn1");
-const choiceC = document.getElementById("bth2");
+const choiceC = document.getElementById("btn2");
 const choiceD = document.getElementById("btn3");
 const answerCheck = document.getElementById("answerCheck");
 
@@ -113,7 +113,7 @@ function checkAnswer(answer) {
     } else {
         totalTime -= 10;
         timeLeft.textContent = totalTime;
-        answerCheck.textContent = "incorrect, the answer is " + questions[questionIndex].answer;
+        answerCheck.textContent = "incorrect";
     }
 
     questionIndex++;
@@ -124,10 +124,10 @@ function checkAnswer(answer) {
     }
 }
 
-function chooseA() {checkAnswer(0);}
-function chooseB() {checkAnswer(1);}
-function chooseC() {checkAnswer(2);}
-function chooseD() {checkAnswer(3);}
+function chooseA() { checkAnswer(0); }
+function chooseB() { checkAnswer(1); }
+function chooseC() { checkAnswer(2); }
+function chooseD() { checkAnswer(3); }
 
 //game over when questions answers/run out of time
 function gameOver() {
@@ -157,7 +157,7 @@ function storeHighScores(event) {
     highScoreSection.style.display = "block";
 
     let savedHighScores = localStorage.getItem("high scores");
-    var scoresArray;
+    let scoresArray;
 
     if(savedHighScores === null) {
         scoresArray = [];
@@ -173,7 +173,7 @@ function storeHighScores(event) {
     console.log(userScore);
     scoresArray.push(userScore);
 
-    var scoresArray = JSON.stringify(scoresArray);
+    let scoresArrayString = JSON.stringify(scoresArray);
     window.localStorage.setItem("high scores", scoresArrayString);
 
     showHighScores();
@@ -197,6 +197,7 @@ function showHighScores() {
     console.log(savedHighScores);
 
     let storedHighScores = JSON.parse(savedHighScores);
+    
     for (; i < storeHighScores.length; i++) {
         let eachNewHighScore = document.getElementById("p");
         eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " .storedHighScores[i].score;
